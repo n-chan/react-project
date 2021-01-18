@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { TrieTree } from "../assets/TrieTree";
+import Chart from "./Chart";
 
 function SearchBar() {
-  const [info, setInfo] = useState("");
+  const [info, setInfo] = useState([]);
   const [state, setState] = useState({
     activeOption: -1,
     filteredOptions: [],
@@ -116,10 +117,10 @@ function SearchBar() {
       const response = await fetch(
         "https://api.covidtracking.com/v1/states/" +
           stateMap.current.get(state.userInput) +
-          "/info.json"
+          "/daily.json"
       );
       const jsonData = await response.json();
-      setInfo(JSON.stringify(jsonData));
+      setInfo(jsonData);
     } catch (err) {
       console.err(err.message);
       alert("Invalid!");
@@ -140,7 +141,7 @@ function SearchBar() {
         <button>Submit</button>
       </form>
       <ul>{filteredOptionsList}</ul>
-      {info}
+      <Chart info={info} />
     </div>
   );
 }
