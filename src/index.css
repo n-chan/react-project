@@ -1,0 +1,19 @@
+.options-list {
+    border: 1px solid black;
+    border-bottom: none;
+    list-style: none;
+    width: 50%;
+}
+
+.option {
+    border-bottom: 1px solid black;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: black;
+}
+
+.option-active {
+    background-color: black;
+}
